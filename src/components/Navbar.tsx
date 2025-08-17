@@ -48,8 +48,12 @@ export const Navbar = () => {
         <Flex align="center" justify="space-between">
           <HStack spacing={3}>
             <NavLink to="/" label="Home" />
-            <NavLink to="/about" label="About" />
-            <NavLink to="/login" label="Login" />
+
+            <NavLink to="/admin-dashboard" label="Dashboard do CCA" />
+            <NavLink to="/user-dashboard" label="Dashboard do Usuário" />
+            <NavLink to="/file-upload" label="Carga de Arquivos" />
+            <NavLink to="/user-login" label="User Login" />
+            <NavLink to="/about" label="Sobre" />
           </HStack>
           <IconButton
             aria-label="Toggle color mode"
