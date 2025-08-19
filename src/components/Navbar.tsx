@@ -7,9 +7,11 @@ import {
   Link as ChakraLink,
   useColorMode,
   useColorModeValue,
+  Text,
 } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { navigationLinks } from "../utils/utils";
 
 export const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -47,20 +49,19 @@ export const Navbar = () => {
       <Container maxW="container.xl" py={2}>
         <Flex align="center" justify="space-between">
           <HStack spacing={3}>
-            <NavLink to="/" label="Home" />
-
-            <NavLink to="/admin-dashboard" label="Dashboard do CCA" />
-            <NavLink to="/user-dashboard" label="Dashboard do Usuário" />
-            <NavLink to="/file-upload" label="Carga de Arquivos" />
-            <NavLink to="/user-login" label="User Login" />
-            <NavLink to="/about" label="Sobre" />
+            {navigationLinks.map((link) => (
+              <NavLink key={link.to} to={link.to} label={link.label} />
+            ))}
           </HStack>
-          <IconButton
-            aria-label="Toggle color mode"
-            onClick={toggleColorMode}
-            icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-            variant="ghost"
-          />
+          <HStack spacing={3}>
+            <IconButton
+              aria-label="Toggle color mode"
+              onClick={toggleColorMode}
+              icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+              variant="ghost"
+            />
+            <Text fontSize={{ base: "md", md: "lg" }}>Sair</Text>
+          </HStack>
         </Flex>
       </Container>
     </Box>

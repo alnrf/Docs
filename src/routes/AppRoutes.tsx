@@ -5,7 +5,6 @@ import About from "../pages/About";
 import AdminDashboard from "../pages/AdminDashboard";
 import UserDashboard from "../pages/UserDashboard";
 import FilesUpload from "../pages/FilesUpload";
-import UserLogin from "../pages/UserLogin";
 
 export const AppRoutes = () => (
   <Routes>
@@ -15,6 +14,5 @@ export const AppRoutes = () => (
     <Route path="/admin-dashboard" element={<AdminDashboard />} />
     <Route path="/user-dashboard" element={<UserDashboard />} />
     <Route path="/file-upload" element={<FilesUpload />} />
-    <Route path="/user-login" element={<UserLogin />} />
   </Routes>
 );
