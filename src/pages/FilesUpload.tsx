@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Container, Heading, Stack, Text, VStack } from "@chakra-ui/react";
+import { Radio, RadioGroup } from "@chakra-ui/react";
 
 export default function FilesUpload() {
   return (
@@ -24,9 +25,17 @@ export default function FilesUpload() {
               shadow="sm"
             >
               <Heading as="h2" size="md" mb={2}>
-                Arquivo
+                Documento de Identificação
               </Heading>
               <Text>Conteúdo de exemplo adaptável ao tamanho da tela.</Text>
+              {/* Seletores (radio) adicionados abaixo */}
+              <RadioGroup defaultValue="rg" mt={4}>
+                <Stack direction="row" spacing={6}>
+                  <Radio value="rg">RG</Radio>
+                  <Radio value="e_cnh">CNH Digital</Radio>
+                  <Radio value="cnh">CNH Impressa</Radio>
+                </Stack>
+              </RadioGroup>
             </Box>
           </VStack>
         </Stack>
