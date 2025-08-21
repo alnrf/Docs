@@ -1,8 +1,112 @@
-import React from "react";
-import { Box, Container, Heading, Stack, Text, VStack } from "@chakra-ui/react";
-import { Radio, RadioGroup } from "@chakra-ui/react";
+import React, { useState } from "react";
+import {
+  Box,
+  Container,
+  Heading,
+  Stack,
+  Text,
+  VStack,
+  Radio,
+  RadioGroup,
+  Checkbox,
+} from "@chakra-ui/react";
 
 export default function FilesUpload() {
+  const [docType, setDocType] = useState("rg");
+  const [noCpf, setNoCpf] = useState(false);
+
+  // Helper to render file inputs
+  const renderFileInputs = () => {
+    if (docType === "rg") {
+      return (
+        <>
+          <Stack direction={{ base: "column", md: "row" }} spacing={4} mt={4}>
+            <Box>
+              <Text fontSize="sm" mb={1}>
+                Frente (ou documento aberto)
+              </Text>
+              <input
+                type="file"
+                accept=".jpg,.jpeg,.png,.pdf"
+                style={{ display: "block" }}
+              />
+            </Box>
+            <Box>
+              <Text fontSize="sm" mb={1}>
+                Verso
+              </Text>
+              <input
+                type="file"
+                accept=".jpg,.jpeg,.png,.pdf"
+                style={{ display: "block" }}
+              />
+            </Box>
+          </Stack>
+          <Checkbox
+            mt={4}
+            isChecked={noCpf}
+            onChange={(e) => setNoCpf(e.target.checked)}
+          >
+            Meu RG não possui CPF
+          </Checkbox>
+          {noCpf && (
+            <Box mt={4}>
+              <Text fontSize="sm" mb={1}>
+                Selecione o arquivo do comprovante de CPF
+              </Text>
+              <input
+                type="file"
+                accept=".jpg,.jpeg,.png,.pdf"
+                style={{ display: "block" }}
+              />
+            </Box>
+          )}
+        </>
+      );
+    }
+    if (docType === "cnh") {
+      return (
+        <Stack direction={{ base: "column", md: "row" }} spacing={4} mt={4}>
+          <Box>
+            <Text fontSize="sm" mb={1}>
+              Frente (ou documento aberto)
+            </Text>
+            <input
+              type="file"
+              accept=".jpg,.jpeg,.png,.pdf"
+              style={{ display: "block" }}
+            />
+          </Box>
+          <Box>
+            <Text fontSize="sm" mb={1}>
+              Verso
+            </Text>
+            <input
+              type="file"
+              accept=".jpg,.jpeg,.png,.pdf"
+              style={{ display: "block" }}
+            />
+          </Box>
+        </Stack>
+      );
+    }
+    if (docType === "e_cnh") {
+      return (
+        <Box mt={4}>
+          <Text fontSize="sm" mb={1}>
+            Arquivo
+          </Text>
+          <input
+            type="file"
+            accept=".jpg,.jpeg,.png,.pdf"
+            style={{ display: "block" }}
+          />
+        </Box>
+      );
+    }
+    return null;
+  };
+
   return (
     <Box minH="100vh">
       <Container
@@ -29,13 +133,123 @@ export default function FilesUpload() {
               </Heading>
               <Text>Conteúdo de exemplo adaptável ao tamanho da tela.</Text>
               {/* Seletores (radio) adicionados abaixo */}
-              <RadioGroup defaultValue="rg" mt={4}>
+              <RadioGroup value={docType} onChange={setDocType} mt={4}>
                 <Stack direction="row" spacing={6}>
                   <Radio value="rg">RG</Radio>
                   <Radio value="e_cnh">CNH Digital</Radio>
                   <Radio value="cnh">CNH Impressa</Radio>
                 </Stack>
               </RadioGroup>
+
+              {/* File selectors below radio group */}
+              {renderFileInputs()}
+            </Box>
+
+            <Box
+              p={{ base: 4, md: 6 }}
+              rounded="xl"
+              borderWidth="1px"
+              shadow="sm"
+            >
+              <Heading as="h2" size="md" mb={2}>
+                Comprovante de Estado Civil
+              </Heading>
+              <Text>
+                Certidão de Nascimento, Casamento/Divórcio, Pacto Antenupcial,
+                Reg. Aux., etc.
+              </Text>
+
+              <Box mt={4}>
+                <input
+                  type="file"
+                  accept=".jpg,.jpeg,.png,.pdf"
+                  style={{ display: "block" }}
+                />
+              </Box>
+            </Box>
+            <Box
+              p={{ base: 4, md: 6 }}
+              rounded="xl"
+              borderWidth="1px"
+              shadow="sm"
+            >
+              <Heading as="h2" size="md" mb={2}>
+                Comprovante de Renda
+              </Heading>
+              <Text>
+                Últimos 3 Holerites, Pro Labore mês anterior, D-IRPF 2024/2025,
+                etc.
+              </Text>
+
+              <Box mt={4}>
+                <input
+                  type="file"
+                  accept=".jpg,.jpeg,.png,.pdf"
+                  style={{ display: "block" }}
+                />
+              </Box>
+            </Box>
+            <Box
+              p={{ base: 4, md: 6 }}
+              rounded="xl"
+              borderWidth="1px"
+              shadow="sm"
+            >
+              <Heading as="h2" size="md" mb={2}>
+                Comprovante de Endereço
+              </Heading>
+              <Text>
+                Conta de Água, Energia ou Telefone emitida nos últimos 60 dias.
+              </Text>
+
+              <Box mt={4}>
+                <input
+                  type="file"
+                  accept=".jpg,.jpeg,.png,.pdf"
+                  style={{ display: "block" }}
+                />
+              </Box>
+            </Box>
+            <Box
+              p={{ base: 4, md: 6 }}
+              rounded="xl"
+              borderWidth="1px"
+              shadow="sm"
+            >
+              <Heading as="h2" size="md" mb={2}>
+                Declaração do Imposto de Renda
+              </Heading>
+              <Text>
+                Recibo de Entrega e Retificadoras se for o caso ou Comprovante
+                de Isento.
+              </Text>
+
+              <Stack
+                direction={{ base: "column", md: "row" }}
+                spacing={4}
+                mt={4}
+              >
+                <Box>
+                  <Text fontSize="sm" mb={1}>
+                    Declaração
+                  </Text>
+                  <input
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.pdf"
+                    style={{ display: "block" }}
+                  />
+                </Box>
+                <Box>
+                  <Text fontSize="sm" mb={1}>
+                    Recibo de Entrega
+                  </Text>
+                  <input
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.pdf"
+                    style={{ display: "block" }}
+                  />
+                </Box>
+              </Stack>
             </Box>
           </VStack>
         </Stack>
