@@ -50,16 +50,34 @@ export default function FilesUpload() {
             Meu RG não possui CPF
           </Checkbox>
           {noCpf && (
-            <Box mt={4}>
-              <Text fontSize="sm" mb={1}>
-                Selecione o arquivo do comprovante de CPF
-              </Text>
-              <input
-                type="file"
-                accept=".jpg,.jpeg,.png,.pdf"
-                style={{ display: "block" }}
-              />
-            </Box>
+            <Stack
+              direction={{ base: "column", md: "row" }}
+              spacing={4}
+              mt={4}
+              justifyContent={{ base: "flex-start", md: "space-between" }}
+            >
+              <Box mt={4}>
+                <Text fontSize="sm" mb={1}>
+                  Selecione o arquivo do comprovante de CPF
+                </Text>
+                <input
+                  type="file"
+                  accept=".jpg,.jpeg,.png,.pdf"
+                  style={{ display: "block" }}
+                />
+              </Box>
+              <Box mt={4}>
+                <Text fontSize="sm" mb={1}>
+                  <a
+                    href="https://servicos.receita.fazenda.gov.br/Servicos/CPF/ImpressaoComprovante/ConsultaImpressao.asp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Comprovante de Inscrição no CPF
+                  </a>
+                </Text>
+              </Box>
+            </Stack>
           )}
         </>
       );
