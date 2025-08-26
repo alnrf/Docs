@@ -9,7 +9,9 @@ import {
   Radio,
   RadioGroup,
   Checkbox,
+  Link,
 } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 export default function FilesUpload() {
   const [docType, setDocType] = useState("rg");
@@ -53,8 +55,9 @@ export default function FilesUpload() {
             <Stack
               direction={{ base: "column", md: "row" }}
               spacing={4}
-              mt={4}
+              mt={2}
               justifyContent={{ base: "flex-start", md: "space-between" }}
+              alignItems="center"
             >
               <Box mt={4}>
                 <Text fontSize="sm" mb={1}>
@@ -68,13 +71,16 @@ export default function FilesUpload() {
               </Box>
               <Box mt={4}>
                 <Text fontSize="sm" mb={1}>
-                  <a
+                  <Link
                     href="https://servicos.receita.fazenda.gov.br/Servicos/CPF/ImpressaoComprovante/ConsultaImpressao.asp"
                     target="_blank"
+                    color="teal.500"
                     rel="noopener noreferrer"
+                    _hover={{ textDecoration: "none" }}
                   >
                     Comprovante de Inscrição no CPF
-                  </a>
+                    <ExternalLinkIcon mx="2px" ml={2} />
+                  </Link>
                 </Text>
               </Box>
             </Stack>
@@ -176,14 +182,35 @@ export default function FilesUpload() {
                 Certidão de Nascimento, Casamento/Divórcio, Pacto Antenupcial,
                 Reg. Aux., etc.
               </Text>
-
-              <Box mt={4}>
-                <input
-                  type="file"
-                  accept=".jpg,.jpeg,.png,.pdf"
-                  style={{ display: "block" }}
-                />
-              </Box>
+              <Stack
+                direction={{ base: "column", md: "row" }}
+                spacing={4}
+                mt={2}
+                justifyContent={{ base: "flex-start", md: "space-between" }}
+                alignItems="center"
+              >
+                <Box mt={4}>
+                  <input
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.pdf"
+                    style={{ display: "block" }}
+                  />
+                </Box>
+                <Box mt={4}>
+                  <Text fontSize="sm" mb={1}>
+                    <Link
+                      href="https://www.registrocivil.org.br/"
+                      target="_blank"
+                      color="teal.500"
+                      rel="noopener noreferrer"
+                      _hover={{ textDecoration: "none" }}
+                    >
+                      Registro Civil - 2ª Via de Certidões
+                      <ExternalLinkIcon mx="2px" ml={2} />
+                    </Link>
+                  </Text>
+                </Box>
+              </Stack>
             </Box>
             <Box
               p={{ base: 4, md: 6 }}
@@ -228,6 +255,7 @@ export default function FilesUpload() {
                 />
               </Box>
             </Box>
+
             <Box
               p={{ base: 4, md: 6 }}
               rounded="xl"
@@ -245,7 +273,9 @@ export default function FilesUpload() {
               <Stack
                 direction={{ base: "column", md: "row" }}
                 spacing={4}
-                mt={4}
+                mt={2}
+                justifyContent={{ base: "flex-start", md: "space-between" }}
+                alignItems="center"
               >
                 <Box>
                   <Text fontSize="sm" mb={1}>
@@ -266,6 +296,20 @@ export default function FilesUpload() {
                     accept=".jpg,.jpeg,.png,.pdf"
                     style={{ display: "block" }}
                   />
+                </Box>
+                <Box mt={4}>
+                  <Text fontSize="sm" mb={1}>
+                    <Link
+                      href="https://cav.receita.fazenda.gov.br/autenticacao/login"
+                      target="_blank"
+                      color="teal.500"
+                      rel="noopener noreferrer"
+                      _hover={{ textDecoration: "none" }}
+                    >
+                      Receita Federal
+                      <ExternalLinkIcon mx="2px" ml={2} />
+                    </Link>
+                  </Text>
                 </Box>
               </Stack>
             </Box>
